@@ -54,4 +54,35 @@ public class Graph {
             System.out.println(loc + " --> " + cityMap.get(loc));
         }
     }
+
+    public void bfs(String start ){
+        if (!cityMap.containsKey(start)){
+            System.out.println("Start Location not found!");
+            return;
+        }
+
+        Queue<String> queue = new LinkedList<>();
+        Set<String> visited = new HashSet<>();
+
+        queue.add(start);
+        visited.add(start);
+
+        System.out.println("\nBFS Traversal starting from" + start + ":");
+        while (!queue.isEmpty()) {
+            String node = queue.poll();
+            System.out.println(node + " ");
+
+            for (String neighbour : cityMap.get(node)) {
+                if (!visited.contains(neighbour)) {
+                    visited.add(neighbour);
+                    queue.add(neighbour);
+                }
+            }
+        }
+        System.out.println();
+    }
+
+    public boolean hasLocation(String location) {
+        return cityMap.containsKey(location);
+    }
 }
