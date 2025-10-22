@@ -15,4 +15,16 @@ public class Graph {
             System.out.println("Location already exists!");
         }
     }
+
+    public void removeLocation(String location) {
+        if (cityMap.containsKey(location)) {
+            cityMap.remove(location);
+            for (String loc : cityMap.keySet()) {
+                cityMap.get(loc).remove(location);
+            }
+            System.out.println("Location removed: " + location);
+        } else {
+            System.out.println("Location not found!");
+        }
+    }
 }
