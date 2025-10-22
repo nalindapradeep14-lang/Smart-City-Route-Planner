@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class LocationManager {
-    private Graph graph;
-    private Scanner scanner;
+    private final Graph graph;
+    private final Scanner scanner;
 
     public LocationManager(Graph graph) {
         this.graph = graph;
