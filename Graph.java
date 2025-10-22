@@ -28,13 +28,30 @@ public class Graph {
         }
     }
 
-    public void removeRoad(String loc1, String loc2) {
+    public void addRoad(String loc1, String loc2) {
+        if (cityMap.containsKey(loc1) && cityMap.containsKey(loc2)) {
+            cityMap.get(loc1).add(loc2);
+            cityMap.get(loc2).add(loc1);
+            System.out.println("Road added between " + loc1 + "and" + loc2);
+        } else {
+            System.out.println("Both loacations must exist first!");
+        }
+    }
+    
+        public void removeRoad(String loc1, String loc2) {
         if (cityMap.containsKey(loc1) && cityMap.containsKey(loc2)) {
             cityMap.get(loc1).remove(loc2);
             cityMap.get(loc2).remove(loc1);
-            System.out.println("Rode removed between " + loc1 + "and" + loc2);
+            System.out.println("Road removed between " + loc1 + "and" + loc2);
         } else {
             System.out.println("one or both loacation not found!");
+        }
+    }
+    
+    public void displayConnections() {
+        System.out.println("\n--- All city connections ---");
+        for (String loc : cityMap. keySet()) {
+            System.out.println(loc + " --> " + cityMap.get(loc));
         }
     }
 }
