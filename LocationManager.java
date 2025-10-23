@@ -9,10 +9,16 @@ public class LocationManager {
         this.scanner = new Scanner(System.in);
     }
 
-    public void addLocation() {
+    public String addLocation() {
         System.out.print("Enter Location name: ");
         String name = scanner.nextLine().trim();
         graph.addLocation(name);
+        if (name.isEmpty()) {
+            System.out.println("no name entered. Aborting add.");
+            return "";
+        }
+        graph.addLocation(name);
+        return name;
     }
 
     public void removeLocation() {

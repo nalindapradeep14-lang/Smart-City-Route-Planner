@@ -18,16 +18,22 @@ public class SmartCityMain {
             System.out.println("6. Display all locations (tree)");
             System.out.println("7. BFS traversal from a location");
             System.out.println("8. Exit");
-            System.out.print("Enter your choice");
+            System.out.print("Enter your choice ");
 
             String choice = sc.next().trim();
 
             switch (choice) {
                 case "1" -> {
-                    manager.addLocation();
-                    System.out.print("Enter same name again to store in tree: ");
+                    System.out.print("Enter location name: ");
+                    sc.nextLine();
                     String locName = sc.nextLine().trim();
-                    tree.insert(locName);
+                    if (graph.addLocation(locName)) {
+                        System.out.println("Location added to graph: " + locName);
+                        tree.insert(locName);
+                        System.out.println("Location added to tree: " + locName);
+                    } else {
+                        System.out.println("Location already exists!");
+                    }
                 }
                 case "2" -> manager.removeLocation();
                 case "3" -> manager.addRoad();
@@ -35,7 +41,7 @@ public class SmartCityMain {
                 case "5" -> manager.showConnections();
                 case "6" -> tree.inorder();
                 case "7" -> {
-                    System.out.print("Enter starting location for BFS; ");
+                    System.out.print("Enter starting location for BFS: ");
                     String start = sc.nextLine().trim();
                     graph.bfs(start);
                 }

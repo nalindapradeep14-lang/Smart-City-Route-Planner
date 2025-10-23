@@ -28,7 +28,7 @@ public class LocationTree {
     }
 
     public void inorder() {
-        System.out.println("\n --- Location (Tree Traversal Order) --");
+        System.out.println("\n --- Location (Tree Traversal Order) ---");
         inorderRec(root);
         System.out.println();
 

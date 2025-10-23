@@ -7,14 +7,14 @@ public class Graph {
         cityMap = new HashMap<>();
     }
     
-    public void addLocation(String location) {
-        if (!cityMap.containsKey(location)) {
-            cityMap.put(location, new ArrayList<>());
-            System.out.println("Location added: " + location);
-        } else {
-            System.out.println("Location already exists!");
-        }
+    public boolean addLocation(String location) {
+    if (!cityMap.containsKey(location)) {
+        cityMap.put(location, new ArrayList<>());
+        return true;
     }
+    return false;
+    }
+
 
     public void removeLocation(String location) {
         if (cityMap.containsKey(location)) {
@@ -32,9 +32,9 @@ public class Graph {
         if (cityMap.containsKey(loc1) && cityMap.containsKey(loc2)) {
             cityMap.get(loc1).add(loc2);
             cityMap.get(loc2).add(loc1);
-            System.out.println("Road added between " + loc1 + "and" + loc2);
+            System.out.println("Road added between " + loc1 + " and " + loc2);
         } else {
-            System.out.println("Both loacations must exist first!");
+            System.out.println("Both locations must exist first!");
         }
     }
     
@@ -42,9 +42,9 @@ public class Graph {
         if (cityMap.containsKey(loc1) && cityMap.containsKey(loc2)) {
             cityMap.get(loc1).remove(loc2);
             cityMap.get(loc2).remove(loc1);
-            System.out.println("Road removed between " + loc1 + "and" + loc2);
+            System.out.println("Road removed between " + loc1 + " and " + loc2);
         } else {
-            System.out.println("one or both loacation not found!");
+            System.out.println("one or both locations not found!");
         }
     }
     
@@ -67,10 +67,10 @@ public class Graph {
         queue.add(start);
         visited.add(start);
 
-        System.out.println("\nBFS Traversal starting from" + start + ":");
+        System.out.println("\nBFS Traversal starting from " + start + ":");
         while (!queue.isEmpty()) {
             String node = queue.poll();
-            System.out.println(node + " ");
+            System.out.print(node + " ");
 
             for (String neighbour : cityMap.get(node)) {
                 if (!visited.contains(neighbour)) {
